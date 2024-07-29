@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% if article %}
+    <h1>{{ title }}: {{ article.title }}</h1>
+    {% else %}
+    <h1>{{ title }}</h1>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if is_owner %}
+        <button type="submit">Save changes</button>
+        {% endif %}
+    </form>
+</body>
+</html>

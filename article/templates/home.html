@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article - Django Sample Project</title>
+</head>
+<body>
+<h1>Welcome to Django Sample Project</h1>
+<p>This is the home page of the Django Sample Project</p>
+{% if user.is_authenticated %}
+<p>You are logged in as {{ user.username }}</p> <a href="{% url 'authz:logout' %}">Signout</a>
+{% else %}
+<p>You are not logged in!</p> <a href="{% url 'authz:login' %}">Singin</a>
+{% endif %}
+</br></br>
+<h2> New Articles </h2></br>
+<a href="{% url 'article:create_article' %}">Create New Article</a>
+</br></br>
+<ul>
+    {% for article in articles %}
+        <li>
+            <a href="{% url 'article:show_article' article.id %}">{{ article.title }}</a>
+            <a href="{% url 'article:show_article' article.id %}">Update</a>
+            <a href="{% url 'article:delete_article' article.id %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

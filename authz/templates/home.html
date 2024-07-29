@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authz</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    <h1>Hello {{ user.username }}!</h1>
+    <p you already logged. </p>
+    <a href="{% url 'authz:logout' %}">Logout</a>
+{% else %}
+    <a href="{% url 'authz:login' %}">Login</a>
+    <a href="{% url 'authz:register'%}">Register</a>
+{% endif %}
+
+</body>
+</html>
