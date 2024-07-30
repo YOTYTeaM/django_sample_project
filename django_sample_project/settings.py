@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     # Extensions
-
+    'rest_framework',
+    'rest_framework.authtoken',
 
     # apps
     'article',
@@ -129,6 +130,11 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+REST_FRAMEWORK = {
+	'DEFAULT_PERMISSION_CLASSES': (
+		'rest_framework.permissions.IsAuthenticated',
+	)
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
