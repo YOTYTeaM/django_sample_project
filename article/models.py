@@ -1,7 +1,10 @@
+import autoslug.fields
 from django.db import models
 from django.contrib.auth.models import User, AnonymousUser
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from django.core import validators
+from autoslug import AutoSlugField
+from autoslug.fields import slugify
 
 
 # Create your models here.
@@ -14,6 +17,7 @@ class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
+    slug = AutoSlugField(populate_from='title', unique=True, blank=True)
 
     def last_updated(self):
         return naturaltime(self.updated_at)

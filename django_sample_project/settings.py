@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sitemaps',
 
     # Extensions
     'rest_framework',
@@ -149,3 +150,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Login configuration
 LOGIN_URL = r'/auth/login'
 LOGIN_REDIRECT_URL = ''
+
+STATIC_URL = '/static/'
